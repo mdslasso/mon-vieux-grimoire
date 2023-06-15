@@ -1,0 +1,16 @@
+npm install -g nodemon
+npm install express
+
+
+
+
+
+
+
+Soutenance :
+
+1- middleware
+Un middleware est un bloc de code qui traite les requêtes et réponses de votre application
+
+2- app.use()
+La méthode app.use() vous permet d'attribuer un middleware à une route spécifique de votre application.
