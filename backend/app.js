@@ -27,6 +27,7 @@ app.use((req, res, next) => {
 
 
 
+//------------------------------------------- LIVRES --------------------------------------
 
 // Afficher livre
 app.get('/api/books', (req, res, next) => {
@@ -66,8 +67,6 @@ app.put('/api/books/:id', (req, res, next) => {
 });
 
 
-
-
 // Supprimer  un  livre
 app.delete('/api/books/:id ', (req, res, next) => {
     Books.deleteOne({ _id: req.params.id })
@@ -75,6 +74,12 @@ app.delete('/api/books/:id ', (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 
 });
+
+
+//------------------------------------------- USERS --------------------------------------
+
+
+
 
 
 
