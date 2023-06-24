@@ -13,6 +13,9 @@ npm i --save path.join
 
 
 
+git add. 
+git commit -m "last commit"
+git push
 
 
 
@@ -23,3 +26,11 @@ Un middleware est un bloc de code qui traite les requêtes et réponses de votre
 
 2- app.use()
 La méthode app.use() vous permet d'attribuer un middleware à une route spécifique de votre application.
+
+Qu’est ce qu’un middleware
+Qu’est ce qu’un controller
+J’ai du également expliquer la fonction createbook et signup
+
+
+
+

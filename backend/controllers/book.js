@@ -82,7 +82,7 @@ exports.getBooksBestRating = (req, res, next) => {
 }
 
 // afficher  note user
-exports.rateBook = (req, res, next) => {
+exports.rateBook = (req, res) => {
     Book.findOne({ _id: req.params.id })
         .then(book => {
 
@@ -93,7 +93,7 @@ exports.rateBook = (req, res, next) => {
             let totalRating = 0;
             for (let i = 0; i < book.ratings.length; i++) {
                 let currentRating = book.ratings[i].grade;
-                totalRating += currentRating;
+                totalRating = totalRating + currentRating
             }
             book.averageRating = totalRating / book.ratings.length;
             console.log(book.averageRating);
