@@ -6,16 +6,19 @@ const app = express();
 const booksRoutes = require('./routes/book')
 const usersRoutes = require('./routes/user')
 const path = require('path.join')
+const dotenv = require('dotenv').config();
 
 
 
 
 // Connexion a la base de donnees
-mongoose.connect('mongodb+srv://mdslasso:X3RIRQj2mw05lUTD@cluster0.tl18qzg.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.DB_NAME}.tl18qzg.mongodb.net/?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 module.exports = mongoose;
+
+
 
 
 // Corrriger les erreur cross-origin (cohabitation du servers frontend et backend)
@@ -27,8 +30,6 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
 });
-
-
 
 //------------------------------------------- LIVRES --------------------------------------
 app.use('/api/books', booksRoutes)

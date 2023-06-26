@@ -19,7 +19,7 @@ router.put('/:id', auth, multer, bookController.modifyBook);
 // Supprimer  un  objet
 router.delete('/:id', auth, bookController.deleteBook);
 // donner note user
-router.get('/:id/rating', auth, bookController.rateBook);
+router.post('/:id/rating', auth, bookController.rateBook);
 
 
 

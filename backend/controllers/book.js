@@ -81,15 +81,20 @@ exports.getBooksBestRating = (req, res, next) => {
 
 }
 
-// afficher  note user
+// attribuer une note
 exports.rateBook = (req, res) => {
-    Book.findOne({ _id: req.params.id })
-        .then(book => {
+    //const id = req.params.id;
 
-            book.ratings.push({
-                userId: req.auth.userId,
-                grade: req.body.rating
-            });
+    const newRanting = {
+        userId: req.auth.userId,
+        grade: req.body.rating,
+
+    }
+
+    Book.findOne({ _id: req.params.id })
+
+        .then(book => {
+            book.ratings.push(newRanting);
             let totalRating = 0;
             for (let i = 0; i < book.ratings.length; i++) {
                 let currentRating = book.ratings[i].grade;
