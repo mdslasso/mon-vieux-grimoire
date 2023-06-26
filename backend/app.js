@@ -6,8 +6,7 @@ const app = express();
 const booksRoutes = require('./routes/book')
 const usersRoutes = require('./routes/user')
 const path = require('path.join')
-const dotenv = require('dotenv').config();
-
+const dotenv = require('dotenv').config({ path: "./env/.env" });
 
 
 
@@ -17,8 +16,6 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASS
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 module.exports = mongoose;
-
-
 
 
 // Corrriger les erreur cross-origin (cohabitation du servers frontend et backend)
