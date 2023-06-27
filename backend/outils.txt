@@ -1,0 +1,57 @@
+npm init
+npm install -g nodemon
+npm install express
+npm install mongoose
+npm i dotenv
+npm install mongodb
+npm i body-parser
+npm install --save mongoose-unique-validator
+npm install --save bcrypt
+npm install --save jsonwebtoken
+npm install --save  multer
+npm i --save path.join
+
+
+
+git add. 
+git commit -m "last commit"
+git push
+
+
+
+Soutenance :
+
+1- middleware
+Un middleware est un bloc de code qui traite les requêtes et réponses de votre application
+
+2- app.use()
+La méthode app.use() vous permet d'attribuer un middleware à une route spécifique de votre application.
+
+Qu’est ce qu’un middleware
+Qu’est ce qu’un controller
+J’ai du également expliquer la fonction createbook et signup
+
+Différence entre une méthode & une fonction? 
+A quoi sert new (contexte, new Book),
+quesqu'une variable? 
+Différence entre une variable et une propriété?
+
+
+Pour la soutenance en elle-même, j'avais préparé un powerpoint (pas hyper utile mais toujours apprécié, et ça permet tout de même de cadrer la présentation).
+J'ai commencé par rappeler le contexte, présenter les missions et fonctionnalités attendus, j'ai préparé un petit scénario pour tester le tout :
+Un utilisateur et un livre déjà crée, une navigation sur le site avec un premier navigateur (sans être connecté) pour vérifier que tout fonctionne et que nous sommes bien restreint, ensuite avec un second navigateur j'ai crée un utilisateur, consulté et noté le premier livre et crée et modifié un second livre. Enfin, de retour dans le premier navigateur, je me suis connecté avec le premier utilisateur pour noter le second livre et supprimer le premier. De cette façon, on test toutes les opérations CRUD. Le tout en navigant à certains moment dans MongoDB pour montrer l'évolution de la base de données.
+Ensuite j'ai présenté la structure du code et les packages utilisés pour sécuriser la base données, et c'est à ce moment que j'ai été dans VSCode, pour à la fois montrer que l'architecture était bien respecté et présenter un peu plus en détail le controller books (notamment la partie signup et login, puisque je venais de parler de sécuriser la base données).
+Pour finir j'ai aborder l'aspect Green Code avant de conclure la présentation.
+Je n'ai plus toutes les questions en tête, mais il m'a été demandé quelles sont les requêtes HTTP utilisées pour réaliser les opérations CRUD, et comment faire pour transposer ce projet en production sans avoir un soucis lié au chemin des images enregistrées.
+Direction le portfolio maintenant, bon courage à toutes et à tous, la fin du parcours approche !
+
+
+Bonjour m'sieurs dames ! P7 validé ! champagne !!! ha nan j'ai pu d'sous... bon bah cidre doux !!
+petits conseils au cas ou, on sais jamais :
+1/ respectez bien l'architecture Models - Routes - Controllers - Middlewares pour les dossiers.
+2/ pour la connection à mongoDB, pensez à bien permettre l'accès public à votre cluster ("0.0.0.0/0)" pour que l'évaluateur puisse juger si tout est ok.
+3/ Inutil de chercher à automatiser l'actualisation de la note du livre avec une méthode "post" dans le modèls , comme j'ai voulu le faire. ça pose plus de problême que ça en résout. faites simples.
+4/ Veillez à ce que les variables d'environnement (dans .env) soient bien dans le gitignore.
+5/ il est bien vue (apparemment) que les étapes de cryptage du mot de passe, la gestion des token , le stockage de l'image.. en gros tout ce qui ne concerne pas directement la DB et la response soient le plus possible geré par des middlewares. ça rend le code plus modulable. (modifié) 
+
+
