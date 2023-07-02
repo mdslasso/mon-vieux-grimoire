@@ -1,5 +1,4 @@
 const Book = require('../models/Book');
-//const Book = require('../data/data.json');
 const fs = require('fs');
 
 // afficher les books
@@ -65,37 +64,21 @@ exports.modifyBook = (req, res, next) => {
 
 
 
-/*
-exports.deleteBook = (req, res, next) => {
-    const id = { _id: req.params.id };
-    Book.deleteOne(id)
-        .then(() => res.status(200).json({ message: 'Objet a ete supprime succes' }))
-        .catch(error => res.status(400).json({ error }));
-}
-*/
 // supprimer book
 exports.deleteBook = (req, res, next) => {
-    Book.deleteOne({ _id: req.params.id })
+    Book.findOne({ _id: req.params.id })
         .then((book) => {
-
             if (book.userId != req.auth.userId) {
-
-                res.status(200).json({ message: 'Objet a ete supprime succes' });
-
-
-            } else {
-
                 res.status(401).json({ message: 'Not authorized' });
+            } else {
+                Book.deleteOne({ _id: req.params.id })
+                    .then(() => res.status(200).json({ message: 'Objet a ete supprime succes' }))
+                    .catch(error => res.status(400).json({ error }));
             }
-
         })
-        .catch(error => res.status(400).json({ error }));
+
 
 }
-
-
-
-
 
 // afficher 3 livres de la base de données ayant la meilleure note moyenne.
 exports.getBooksBestRating = (req, res, next) => {
