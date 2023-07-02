@@ -64,7 +64,7 @@ exports.modifyBook = (req, res, next) => {
 
 
 
-// supprimer book
+
 /*
 exports.deleteBook = (req, res, next) => {
     const id = { _id: req.params.id };
@@ -73,16 +73,19 @@ exports.deleteBook = (req, res, next) => {
         .catch(error => res.status(400).json({ error }));
 }
 */
-
+// supprimer book
 exports.deleteBook = (req, res, next) => {
     Book.deleteOne({ _id: req.params.id })
         .then((book) => {
 
             if (book.userId != req.auth.userId) {
-                res.status(401).json({ message: 'Not authorized' });
+
+                res.status(200).json({ message: 'Objet a ete supprime succes' });
+
 
             } else {
-                res.status(200).json({ message: 'Objet a ete supprime succes' })
+
+                res.status(401).json({ message: 'Not authorized' });
             }
 
         })
