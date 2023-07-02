@@ -81,13 +81,10 @@ exports.getBooksBestRating = (req, res, next) => {
     Book.find().sort({ averageRating: -1 }).limit(3)
         .then(books => res.status(200).json(books))
         .catch(error => res.status(400).json({ error }));
-
-
 }
 
 // attribuer une note
 exports.rateBook = (req, res) => {
-    //const id = req.params.id;
     const newRanting = {
         userId: req.auth.userId,
         grade: req.body.rating,
