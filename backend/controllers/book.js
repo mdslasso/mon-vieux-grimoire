@@ -62,8 +62,6 @@ exports.modifyBook = (req, res, next) => {
 }
 
 
-
-
 // supprimer book
 exports.deleteBook = (req, res, next) => {
     Book.findOne({ _id: req.params.id })
@@ -76,8 +74,6 @@ exports.deleteBook = (req, res, next) => {
                     .catch(error => res.status(400).json({ error }));
             }
         })
-
-
 }
 
 // afficher 3 livres de la base de données ayant la meilleure note moyenne.
